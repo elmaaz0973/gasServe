@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نظام المرتبات</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="light">
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>
+      <i class="fas fa-calculator"></i>
+      شيت رواتب جاس سيرف
+    </h1>
+    <div class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+      <i class="fas fa-moon" id="themeIcon"></i>
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="loginBox" class="card">
+    <h3><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</h3>
+    <input id="empId" placeholder="رقم الأداء" autocomplete="off">
+    <input id="password" type="password" placeholder="كلمة السر">
+    <button onclick="login()" class="btn-primary"><i class="fas fa-arrow-left"></i> دخول</button>
+  </div>
+
+  <!-- APP -->
+  <div id="appBox" class="hidden">
+
+    <!-- Input Card -->
+    <div class="card">
+      <h3><i class="fas fa-edit"></i> إدخال البيانات</h3>
+      <input id="normal" type="number" placeholder="عدد الورديات العادية">
+      <input id="holiday" type="number" placeholder="عدد ورديات الإجازة">
+      <input id="holidayRate" type="number" placeholder="قيمة وردية الإجازة">
+      
+      <button onclick="calculate()" class="btn-success">
+        <i class="fas fa-calculator"></i> احسب المرتب
+      </button>
+    </div>
+
+    <!-- Result Card -->
+    <div class="card hidden" id="resultBox">
+      <h3><i class="fas fa-receipt"></i> مفردات المرتب</h3>
+      
+      <table id="resultTable"></table>
+      
+      <div class="result big" id="net"></div>
+
+      <button onclick="save()" class="btn-primary">
+        <i class="fas fa-save"></i> حفظ السجل
+      </button>
+      <button onclick="loadArchive()" class="btn-outline">
+        <i class="fas fa-history"></i> عرض الأرشيف
+      </button>
+    </div>
+
+    <!-- Archive Card -->
+    <div class="card hidden" id="archiveBox">
+      <h3><i class="fas fa-archive"></i> الأرشيف</h3>
+      <div id="archiveData"></div>
+      <button onclick="document.getElementById('archiveBox').classList.add('hidden')" class="btn-outline" style="margin-top:15px;">
+        إغلاق
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

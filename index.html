@@ -4,23 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>نظام المرتبات</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body data-theme="light">
-
 <div class="container">
 
   <!-- HEADER -->
   <div class="header">
-    <h1>
-      <i class="fas fa-calculator"></i>
-      شيت رواتب جاس سيرف
-    </h1>
-    <div class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+    <h1><i class="fas fa-calculator"></i> شيت رواتب جاس سيرف</h1>
+    <div class="theme-toggle" onclick="toggleTheme()">
       <i class="fas fa-moon" id="themeIcon"></i>
     </div>
   </div>
@@ -39,10 +34,10 @@
     <!-- Input Card -->
     <div class="card">
       <h3><i class="fas fa-edit"></i> إدخال البيانات</h3>
-      <input id="normal" type="number" placeholder="عدد الورديات العادية">
-      <input id="holiday" type="number" placeholder="عدد ورديات الإجازة">
-      <input id="holidayRate" type="number" placeholder="قيمة وردية الإجازة">
-      
+      <input id="normal" type="number" placeholder="عدد الورديات العادية" inputmode="numeric">
+      <input id="holiday" type="number" placeholder="عدد ورديات الإجازة" inputmode="numeric">
+      <input id="holidayRate" type="number" placeholder="قيمة وردية الإجازة" inputmode="numeric">
+
       <button onclick="calculate()" class="btn-success">
         <i class="fas fa-calculator"></i> احسب المرتب
       </button>
@@ -51,10 +46,16 @@
     <!-- Result Card -->
     <div class="card hidden" id="resultBox">
       <h3><i class="fas fa-receipt"></i> مفردات المرتب</h3>
-      
+
       <table id="resultTable"></table>
-      
-      <div class="result big" id="net"></div>
+
+      <div class="result" id="net"></div>
+
+      <!-- الشهر والسنة قبل الحفظ -->
+      <div class="month-year-row">
+        <input id="month" placeholder="الشهر (مثال: 7)" inputmode="numeric">
+        <input id="year" placeholder="السنة (مثال: 2025)" inputmode="numeric">
+      </div>
 
       <button onclick="save()" class="btn-primary">
         <i class="fas fa-save"></i> حفظ السجل
@@ -67,14 +68,13 @@
     <!-- Archive Card -->
     <div class="card hidden" id="archiveBox">
       <h3><i class="fas fa-archive"></i> الأرشيف</h3>
-      <div id="archiveData"></div>
-      <button onclick="document.getElementById('archiveBox').classList.add('hidden')" class="btn-outline" style="margin-top:15px;">
-        إغلاق
+      <div class="archive-scroll" id="archiveData"></div>
+      <button onclick="document.getElementById('archiveBox').classList.add('hidden')" class="btn-outline" style="margin-top:12px;">
+        <i class="fas fa-times"></i> إغلاق
       </button>
     </div>
 
   </div>
-
 </div>
 
 <script src="main.js"></script>
